@@ -12,7 +12,7 @@ jobs:
       - name: Get changed files
         id: get_changed_files
         run: |
-          changed_files=$(git diff test-on --name-status | cut -f2)
+          changed_files=$(git diff master --name-status | cut -f2)
           echo "CHANGED_FILES=${changed_files}" >> $GITHUB_ENV
       
       - name: Linelint
