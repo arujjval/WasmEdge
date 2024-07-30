@@ -9,14 +9,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Get changed files
-        id: get_changed_files
-        run: |
-          changed_files=$(git diff master --name-status | cut -f2)
-          echo "CHANGED_FILES=${changed_files}" >> $GITHUB_ENV
+      - id: files
+        uses: jitterbit/get-changed-files@v1
+      - run: |
+          echo "${{ steps.files.outputs.all }}"
       
       - name: Linelint
         uses: fernandrone/linelint@0.0.4
         id: linelint
         with: 
-          files: ${{ steps.get_changed_files.outputs.CHANGED_FILES }}
+          files: ${{ steps.files.outputs.all }}
