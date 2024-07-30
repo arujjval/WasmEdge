@@ -19,3 +19,4 @@ jobs:
         id: linelint
         with: 
           args:  ${{ steps.files.outputs.all }}
+          entryPoint: 
