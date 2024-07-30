@@ -17,5 +17,5 @@ jobs:
       - name: Linelint
         uses: fernandrone/linelint@0.0.4
         id: linelint
-        with: 
-          args:  ${{ steps.files.outputs.all }}
+        # with: 
+        #   args:  ${{ steps.files.outputs.all }}
