@@ -1,0 +1,20 @@
+on: [push]
+name: linelint
+
+jobs:
+  linelint:
+    runs-on: ubuntu-latest
+    name: Check if all files end in newline
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v4
+      
+      - name: Linelint
+        uses: fernandrone/linelint@0.0.4
+        id: linelint
+        with: 
+          files: ${{ steps.changed-files.outputs.all_changed_files }}
